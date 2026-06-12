@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allergens · Mardi & Tony</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f3eddc;
+    --cream-deep:#ece3cd;
+    --navy:#23394d;
+    --navy-soft:#3a5169;
+    --coral:#d56b4a;
+    --olive:#8a9663;
+    --olive-soft:#a7b083;
+    --line:#d8cdae;
+    --ink:#404a52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    line-height:1.55;
+    padding:0 0 56px;
+    background-image:radial-gradient(circle at 12% 8%, rgba(213,107,74,.05), transparent 38%),
+                     radial-gradient(circle at 88% 22%, rgba(138,150,99,.06), transparent 40%);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    text-align:center;
+    padding:38px 22px 18px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .hero-ico{width:54px;margin:0 auto 14px}
+  .hero-ico svg{width:54px;height:72px;display:block}
+  .eyebrow{
+    font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--olive);font-weight:500;margin-bottom:14px;
+  }
+  h1{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:600;
+    color:var(--navy);
+    font-size:2.7rem;line-height:1;
+    margin-bottom:6px;
+  }
+  .sub{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--navy-soft);font-weight:500;
+  }
+  .date{
+    font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--coral);margin-top:10px;font-weight:500;
+  }
+
+  /* ---------- Language toggle ---------- */
+  .langbar{
+    position:sticky;top:0;z-index:20;
+    background:var(--cream);
+    display:flex;justify-content:center;gap:6px;
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 6px 14px -12px rgba(35,57,77,.4);
+  }
+  .langbar button{
+    font-family:'Jost',sans-serif;
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+    color:var(--navy-soft);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:9px 18px;
+    cursor:pointer;
+    transition:all .18s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .langbar button.active{
+    background:var(--navy);color:var(--cream);border-color:var(--navy);
+  }
+
+  /* ---------- Intro note ---------- */
+  .intro{
+    max-width:620px;margin:24px auto 6px;padding:0 26px;
+    text-align:center;font-size:.86rem;color:var(--navy-soft);
+  }
+
+  /* ---------- Sections ---------- */
+  main{max-width:640px;margin:0 auto;padding:8px 18px 0}
+  .section{margin-top:30px}
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin:0 6px 14px;
+  }
+  .section-head::after{
+    content:"";flex:1;height:1px;background:var(--line);
+  }
+  .section-head h2{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:600;
+    color:var(--navy);font-size:1.5rem;
+    white-space:nowrap;
+  }
+  .section-head .ico{display:flex;align-items:center}
+  .sec-svg{width:30px;height:30px;display:block}
+
+  /* ---------- Dish cards ---------- */
+  .dish{
+    background:rgba(255,255,255,.42);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:15px 17px;
+    margin-bottom:11px;
+  }
+  .dish-name{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;color:var(--navy);
+    font-size:1.12rem;line-height:1.25;
+    margin-bottom:9px;
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px}
+  .tag{
+    font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    padding:3px 8px;border-radius:20px;
+    background:var(--olive-soft);color:#36402a;
+  }
+  .row{display:flex;gap:9px;font-size:.82rem;margin-bottom:5px}
+  .row:last-child{margin-bottom:0}
+  .row .lbl{
+    flex-shrink:0;font-weight:600;font-size:.62rem;letter-spacing:.1em;
+    text-transform:uppercase;padding-top:2px;width:74px;
+  }
+  .row.contains .lbl{color:var(--coral)}
+  .row.traces .lbl{color:var(--navy-soft)}
+  .row .val{color:var(--ink)}
+  .row.traces .val{color:var(--navy-soft);font-size:.78rem}
+  .none{font-style:italic;color:var(--olive)}
+
+  footer{
+    text-align:center;margin:40px auto 0;padding:0 26px;
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--olive);
+  }
+  footer .heart{font-family:'Cormorant Garamond',serif;font-style:italic;
+    text-transform:none;letter-spacing:0;font-size:1rem;color:var(--coral);
+    display:block;margin-top:8px}
+
+  [hidden]{display:none!important}
+  @media(max-width:380px){
+    h1{font-size:2.3rem}
+    .row{flex-direction:column;gap:1px}
+    .row .lbl{width:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero-ico" aria-hidden="true">
+    <svg viewBox="0 0 60 80">
+      <path d="M24 72h12l-2.5-30h-7z" fill="none" stroke="var(--navy)" stroke-width="2"/>
+      <path d="M25 56h10M24 64h12" stroke="var(--coral)" stroke-width="1.6"/>
+      <path d="M22 42h16" stroke="var(--navy)" stroke-width="2"/>
+      <rect x="26" y="28" width="8" height="14" fill="none" stroke="var(--navy)" stroke-width="1.8"/>
+      <path d="M30 28v-6" stroke="var(--olive)" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M30 22l8 2M30 22l-8 2M30 18l6 1.5M30 18l-6 1.5" stroke="var(--olive)" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="30" cy="18" r="2" fill="var(--coral)"/>
+    </svg>
+  </div>
+  <div class="eyebrow" data-i="eyebrow">Pyrgos Saliareli · Aegina</div>
+  <h1>Mardi &amp; Tony</h1>
+  <div class="sub" data-i="sub">Allergen Guide</div>
+  <div class="date">31 · 07 · 2026</div>
+</header>
+
+<nav class="langbar" aria-label="Language">
+  <button data-lang="en" class="active" onclick="setLang('en')">English</button>
+  <button data-lang="it" onclick="setLang('it')">Italiano</button>
+  <button data-lang="el" onclick="setLang('el')">Ελληνικά</button>
+</nav>
+
+<p class="intro" data-i="intro"></p>
+
+<main id="menu"></main>
+
+<footer>
+  <span data-i="footerNote"></span>
+  <span class="heart">Mardi &amp; Tony</span>
+</footer>
+
+<script>
+/* ---------------- UI strings ---------------- */
+const UI = {
+  en:{
+    eyebrow:"Pyrgos Saliareli · Aegina",
+    sub:"Allergen Guide",
+    intro:"Tap a course to view allergens for each dish. “Contains” lists declared allergens; “Traces” are possible cross-contamination. Please ask our staff if you have any concern.",
+    contains:"Contains",
+    traces:"May contain traces",
+    none:"None declared",
+    footerNote:"With love, from our table to yours",
+    sections:{cocktail:"Cocktail Reception",ouzo:"Ouzo Corner",dips:"Dips & Mezè",bread:"Bread",allergy:"For Guests with Allergies",first:"First Course",main:"Main Course",dessert:"Dessert Buffet",extra:"Extra · Beef Fillet",cake:"Wedding Cake",kids:"Kids’ Lunch Box"}
+  },
+  it:{
+    eyebrow:"Pyrgos Saliareli · Aegina",
+    sub:"Guida Allergeni",
+    intro:"Tocca una portata per vedere gli allergeni di ogni piatto. “Contiene” indica gli allergeni dichiarati; “Tracce” indica possibili contaminazioni. Per qualsiasi dubbio, chiedi al personale.",
+    contains:"Contiene",
+    traces:"Può contenere tracce",
+    none:"Nessuno dichiarato",
+    footerNote:"Con affetto, dalla nostra tavola alla vostra",
+    sections:{cocktail:"Cocktail di Benvenuto",ouzo:"Angolo Ouzo",dips:"Salse & Mezè",bread:"Pane",allergy:"Per Ospiti con Allergie",first:"Primo Piatto",main:"Secondo Piatto",dessert:"Buffet Dolci",extra:"Extra · Filetto di Manzo",cake:"Torta Nuziale",kids:"Lunch Box Bambini"}
+  },
+  el:{
+    eyebrow:"Πύργος Σαλιαρέλη · Αίγινα",
+    sub:"Οδηγός Αλλεργιογόνων",
+    intro:"Πατήστε ένα πιάτο για τα αλλεργιογόνα κάθε εδέσματος. «Περιέχει»: δηλωμένα αλλεργιογόνα· «Ίχνη»: πιθανή επιμόλυνση. Για οποιαδήποτε απορία, ρωτήστε το προσωπικό μας.",
+    contains:"Περιέχει",
+    traces:"Μπορεί να περιέχει ίχνη",
+    none:"Κανένα δηλωμένο",
+    footerNote:"Με αγάπη, από το τραπέζι μας στο δικό σας",
+    sections:{cocktail:"Cocktail Υποδοχής",ouzo:"Γωνιά Ούζου",dips:"Ντιπ & Μεζέ",bread:"Ψωμί",allergy:"Για Καλεσμένους με Αλλεργίες",first:"1ο Πιάτο",main:"Κυρίως Πιάτο",dessert:"Μπουφές Επιδορπίων",extra:"Extra · Φιλέτο Μοσχάρι",cake:"Γαμήλια Τούρτα",kids:"Παιδικό Lunch Box"}
+  }
+};
+
+/* ---------------- Allergen vocabulary ---------------- */
+const A = {
+  gluten:{en:"Gluten",it:"Glutine",el:"Γλουτένη"},
+  lactose:{en:"Lactose",it:"Lattosio",el:"Λακτόζη"},
+  eggs:{en:"Eggs",it:"Uova",el:"Αυγά"},
+  fish:{en:"Fish",it:"Pesce",el:"Ψάρι"},
+  soy:{en:"Soybeans",it:"Soia",el:"Σόγια"},
+  nuts:{en:"Nuts",it:"Frutta a guscio",el:"Ξηροί καρποί"},
+  peanuts:{en:"Peanuts",it:"Arachidi",el:"Φιστίκια"},
+  sesame:{en:"Sesame",it:"Sesamo",el:"Σουσάμι"},
+  mustard:{en:"Mustard",it:"Senape",el:"Μουστάρδα"},
+  sulphites:{en:"Sulphites",it:"Solfiti",el:"Θειώδη"},
+  celery:{en:"Celery",it:"Sedano",el:"Σέλινο"},
+  lupin:{en:"Lupin",it:"Lupini",el:"Λούπινο"},
+  crustaceans:{en:"Crustaceans",it:"Crostacei",el:"Μαλακόστρακα"},
+  molluscs:{en:"Molluscs",it:"Molluschi",el:"Μαλάκια"}
+};
+const ALL14=["gluten","sesame","lactose","mustard","sulphites","fish","eggs","peanuts","nuts","soy","celery","lupin","crustaceans","molluscs"];
+function traceRest(contains){return ALL14.filter(a=>!contains.includes(a));}
+
+/* diet tags */
+const DT={V:{en:"Vegetarian",it:"Vegetariano",el:"Χορτοφαγικό"},
+          VG:{en:"Vegan",it:"Vegano",el:"Vegan"},
+          GF:{en:"Gluten-free",it:"Senza glutine",el:"Χωρίς γλουτένη"},
+          DF:{en:"Dairy-free",it:"Senza lattosio",el:"Χωρίς γαλακτοκομικά"}};
+
+/* ---------------- Menu data ----------------
+   name: per-language dish name
+   tags: diet labels
+   c: contains (allergen keys); if [] -> none
+   t: traces; if "rest" -> all 14 minus contains; or explicit list
+------------------------------------------------ */
+const MENU=[
+ {sec:"cocktail",dishes:[
+   {name:{en:"Baby potato, fresh cream, bric, lemon verbena & chives",it:"Patata novella, crema fresca, bric, verbena & erba cipollina",el:"Baby πατάτα, φρέσκια κρέμα, bric, λουίζα & σχοινόπρασο"},tags:["V","GF"],c:["lactose","mustard"],t:"rest"},
+   {name:{en:"Cone with goat cheese, Aegina pistachio & sweet-and-sour sauce",it:"Cono con formaggio di capra, pistacchio di Egina & salsa agrodolce",el:"Χωνάκι με κατσικίσιο τυρί, φιστίκι Αιγίνης & γλυκόξινη σάλτσα"},tags:["V"],c:["gluten","lactose","eggs","soy","nuts"],t:"rest"},
+   {name:{en:"Mini tart with fish roe cream & marinated anchovy",it:"Mini tartelletta con crema di uova di pesce & acciuga marinata",el:"Mini τάρτα με ταραμοσαλάτα & μαριναρισμένο γαύρο"},tags:[],c:["gluten","lactose","eggs","soy","fish"],t:"rest"},
+   {name:{en:"Sea bass tartare with bitter orange & red pepper",it:"Tartare di branzino con arancia amara & peperone rosso",el:"Tartare λαβράκι με νεράντζι & κόκκινη πιπεριά"},tags:["GF","DF"],c:["fish","sulphites"],t:"rest"},
+   {name:{en:"Zucchini fritters with yogurt sauce",it:"Frittelle di zucchine con salsa allo yogurt",el:"Κολοκυθοκεφτέδες με σάλτσα γιαουρτιού"},tags:["V"],c:["gluten","lactose","soy"],t:"rest"},
+   {name:{en:"Dolmadakia Yalantzi (vine leaves stuffed with rice)",it:"Dolmadakia Yalantzi (foglie di vite ripiene di riso)",el:"Ντολμαδάκια Γιαλαντζί (αμπελόφυλλα με ρύζι)"},tags:["VG","GF","DF"],c:[],t:"rest"}
+ ]},
+ {sec:"ouzo",dishes:[
+   {name:{en:"Sand smelts (fried)",it:"Latterini fritti",el:"Αθερίνα"},tags:["DF"],c:["gluten","fish"],t:"rest"},
+   {name:{en:"Fried shrimp",it:"Frittura di gamberi",el:"Φριτούρα γαρίδας"},tags:["DF"],c:["gluten","crustaceans"],t:"rest"},
+   {name:{en:"Grilled octopus",it:"Polpo alla griglia",el:"Χταπόδι ψητό"},tags:["GF","DF"],c:["molluscs"],t:"rest"},
+   {name:{en:"Fried calamari",it:"Calamari fritti",el:"Καλαμαράκια τηγανητά"},tags:["DF"],c:["gluten","fish"],t:"rest"},
+   {name:{en:"Cod croquettes with herbs & tartar sauce",it:"Crocchette di baccalà con erbe & salsa tartara",el:"Κροκέτες μπακαλιάρου με βότανα & σάλτσα tartar"},tags:["DF"],c:["gluten","fish"],t:"rest"}
+ ]},
+ {sec:"dips",dishes:[
+   {name:{en:"Fava bean dip with caramelized onion",it:"Crema di fava con cipolla caramellata",el:"Φάβα με καραμελωμένο κρεμμύδι"},tags:["VG","GF","DF"],c:["sulphites"],t:"rest"},
+   {name:{en:"Fish roe cream dip",it:"Taramosalata (salsa di uova di pesce)",el:"Ταραμοσαλάτα"},tags:["DF"],c:["gluten","fish"],t:"rest"},
+   {name:{en:"Smoked eggplant dip with red pepper",it:"Salsa di melanzana affumicata con peperone rosso",el:"Καπνιστή μελιτζανοσαλάτα με κόκκινη πιπεριά"},tags:["VG","GF","DF"],c:["sulphites"],t:"rest"},
+   {name:{en:"Cherry tomatoes on coarse salt",it:"Pomodorini su sale grosso",el:"Τοματίνια cherry σε χοντρό αλάτι"},tags:["VG","GF","DF"],c:[],t:"rest"}
+ ]},
+ {sec:"bread",dishes:[
+   {name:{en:"Breadsticks, bread rolls & crackers",it:"Grissini, panini & crackers",el:"Κριτσίνια, ψωμάκια & crackers"},tags:["V","DF"],c:["gluten","sesame","nuts"],t:"rest"}
+ ]},
+ {sec:"allergy",dishes:[
+   {name:{en:"Marinated anchovy",it:"Acciuga marinata",el:"Γαύρος μαρινάτος"},tags:[],c:["fish","sulphites"],t:"rest"},
+   {name:{en:"Vegetable tempura",it:"Tempura di verdure",el:"Tempura λαχανικών"},tags:[],c:["gluten","sulphites"],t:"rest"}
+ ]},
+ {sec:"first",dishes:[
+   {name:{en:"Shrimps with julienned zucchini, mint & lime vinaigrette",it:"Gamberi con zucchine julienne, menta & vinaigrette al lime",el:"Γαρίδες με κολοκυθάκια julienne, δυόσμο & vinaigrette μοσχολέμονου"},tags:["GF","DF"],c:["mustard","sulphites"],t:"rest"},
+   {name:{en:"Vegan: Wheat risotto, grilled vegetables, herb gremolata, aged balsamic",it:"Vegano: Risotto di grano, verdure grigliate, gremolata di erbe, aceto balsamico invecchiato",el:"Vegan: Risotto σιταριού, ψητά λαχανικά, gremolata, παλαιωμένο βαλσάμικο"},tags:["VG","DF"],c:["sulphites"],t:"rest"}
+ ]},
+ {sec:"main",dishes:[
+   {name:{en:"Fresh grouper, white sweet potato purée, celery, Kythnos shellfish broth, zucchini flowers",it:"Cernia fresca, purè di patata dolce bianca, sedano, brodo di crostacei di Kythnos, fiori di zucca",el:"Φρέσκια σφυρίδα, πουρές λευκής γλυκοπατάτας, σέλινο, ζωμός οστράκων Κύθνου, ανθοί κολοκυθιάς"},tags:["GF"],c:["lactose","sulphites","fish","celery","crustaceans","molluscs"],t:["gluten","sesame","mustard","eggs","peanuts","nuts","soy","lupin"]},
+   {name:{en:"Vegan: Moussaka with soy milk béchamel, roasted vegetables, smoked paprika & basil",it:"Vegano: Moussaka con besciamella di soia, verdure arrosto, paprika affumicata & basilico",el:"Vegan: Μουσακάς με μπεσαμέλ σόγιας, ψητά λαχανικά, καπνιστή πάπρικα & βασιλικό"},tags:["VG","GF","DF"],c:["soy","sulphites"],t:"rest"}
+ ]},
+ {sec:"extra",dishes:[
+   {name:{en:"Beef fillet, white sweet potato purée, king oyster mushrooms, chanterelles, blueberry & Vinsanto sauce",it:"Filetto di manzo, purè di patata dolce bianca, funghi cardoncelli, finferli, salsa ai mirtilli & Vinsanto",el:"Φιλέτο μοσχάρι, πουρές λευκής γλυκοπατάτας, βασιλομανίταρα, κανθαρέλες, σάλτσα μύρτιλου & Vinsanto"},tags:[],c:["gluten","lactose","sulphites","soy"],t:"rest"}
+ ]},
+ {sec:"dessert",dishes:[
+   {name:{en:"Loukoumades with honey, walnuts & cinnamon",it:"Loukoumades con miele, noci & cannella",el:"Λουκουμάδες με μέλι, καρύδια & κανέλα"},tags:["V","DF"],c:["gluten","nuts"],t:["sesame","lactose","sulphites","eggs","peanuts","soy"]},
+   {name:{en:"Orange pie (custard pie, phyllo, citrus syrup)",it:"Torta all'arancia (crema, pasta fillo, sciroppo agli agrumi)",el:"Πορτοκαλόπιτα"},tags:["V"],c:["gluten","lactose","eggs"],t:["sesame","sulphites","peanuts","nuts","soy"]},
+   {name:{en:"Galaktoboureko",it:"Galaktoboureko",el:"Γαλακτομπούρεκο"},tags:["V"],c:["gluten","lactose","eggs"],t:["sesame","sulphites","peanuts","nuts","soy"]},
+   {name:{en:"Mini pistachio tartlets with Aegina pistachios & apricot jam",it:"Mini tartellette al pistacchio di Egina & marmellata di albicocche",el:"Mini ταρτάκια με φιστίκι Αιγίνης & μαρμελάδα βερίκοκο"},tags:["V"],c:["gluten","lactose","eggs","nuts"],t:["sesame","sulphites","peanuts","soy"]},
+   {name:{en:"Ice cream cart: Aegina pistachio, chocolate, vanilla — cones & cups",it:"Carretto gelati: pistacchio di Aegina, cioccolato, vaniglia — coni & coppette",el:"Καρότσι παγωτού: φιστίκι Αιγίνης, σοκολάτα, βανίλια — χωνάκια & κυπελάκια"},tags:["V"],c:["gluten","lactose","eggs","nuts","soy"],t:"rest"}
+ ]},
+ {sec:"cake",dishes:[
+   {name:{en:"Puff pastry tart with vanilla cream, red berries & berry coulis",it:"Tarte di pasta sfoglia con crema alla vaniglia & coulis di frutti rossi",el:"Τάρτα σφολιάτας με κρέμα βανίλιας, κόκκινα φρούτα & coulis"},tags:["V"],c:["gluten","lactose","eggs"],t:["sesame","sulphites","peanuts","nuts","soy"]}
+ ]},
+ {sec:"kids",dishes:[
+   {name:{en:"Fresh vegetable sticks",it:"Bastoncini di verdure fresche",el:"Sticks φρέσκων λαχανικών"},tags:["VG","GF","DF"],c:[],t:"rest"},
+   {name:{en:"Mini skewer: cherry tomato, mozzarella & basil",it:"Mini spiedino: pomodorino, mozzarella & basilico",el:"Mini σουβλάκι: τοματίνι, μοτσαρέλα & βασιλικός"},tags:["V","GF"],c:["lactose"],t:"rest"},
+   {name:{en:"Mini hamburger",it:"Mini hamburger",el:"Mini Hamburger"},tags:[],c:["gluten","eggs","mustard","sulphites","soy"],t:"rest"},
+   {name:{en:"Chicken nuggets with mayonnaise & tomato chutney",it:"Chicken nuggets con maionese & chutney di pomodoro",el:"Chicken nuggets με μαγιονέζα & chutney ντομάτας"},tags:[],c:["gluten","eggs","sulphites","soy"],t:"rest"},
+   {name:{en:"Baby skin potatoes",it:"Patatine novelle",el:"Baby skin potatoes"},tags:["VG","GF","DF"],c:[],t:"rest"},
+   {name:{en:"Children’s juice & bottled water",it:"Succo per bambini & acqua in bottiglia",el:"Παιδικός χυμός & εμφιαλωμένο νερό"},tags:[],c:[],t:"rest"}
+ ]}
+];
+
+/* ---------------- Render ---------------- */
+/* Hand-drawn style SVG icons echoing the wedding menu illustrations.
+   Stroke uses navy, fills use coral/olive accents. 30x30 viewbox. */
+const ICON={
+  // Negroni / cocktail glass with orange peel
+  cocktail:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M7 9h16l-2 2v8a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3v-8z" fill="none" stroke="var(--navy)" stroke-width="1.4"/><path d="M9 12h12" stroke="var(--coral)" stroke-width="1.2"/><circle cx="19" cy="15.5" r="1.7" fill="var(--coral)"/><path d="M11 7l2 2M19 7l-2 2" stroke="var(--olive)" stroke-width="1.2" stroke-linecap="round"/></svg>`,
+  // Octopus
+  ouzo:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M15 6a6 6 0 0 1 6 6c0 2-1 3-1 4" fill="none" stroke="var(--navy)" stroke-width="1.4"/><path d="M15 6a6 6 0 0 0-6 6c0 2 1 3 1 4" fill="none" stroke="var(--navy)" stroke-width="1.4"/><circle cx="13" cy="11" r="1" fill="var(--navy)"/><circle cx="17" cy="11" r="1" fill="var(--navy)"/><path d="M9 16c-1 2-3 2-4 4M11 17c-1 3-2 3-2 6M15 17c0 3 0 4 0 6M19 17c1 3 2 3 2 6M21 16c1 2 3 2 4 4" fill="none" stroke="var(--coral)" stroke-width="1.3" stroke-linecap="round"/></svg>`,
+  // Olive branch
+  dips:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M6 23C10 17 16 12 24 8" fill="none" stroke="var(--olive)" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="13" cy="15" rx="2" ry="3" fill="var(--olive)" transform="rotate(-35 13 15)"/><ellipse cx="18" cy="11" rx="2" ry="3" fill="var(--coral)" transform="rotate(-35 18 11)"/><ellipse cx="9" cy="19" rx="1.8" ry="2.6" fill="var(--olive)" transform="rotate(-35 9 19)"/></svg>`,
+  // Bread loaf
+  bread:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M6 14a9 5 0 0 1 18 0v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z" fill="none" stroke="var(--navy)" stroke-width="1.4"/><path d="M11 12v8M15 11v9M19 12v8" stroke="var(--coral)" stroke-width="1.2"/></svg>`,
+  // Warning leaf (allergy)
+  allergy:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M15 5l9 16H6z" fill="none" stroke="var(--coral)" stroke-width="1.4" stroke-linejoin="round"/><path d="M15 11v5" stroke="var(--coral)" stroke-width="1.6" stroke-linecap="round"/><circle cx="15" cy="18.5" r="1" fill="var(--coral)"/></svg>`,
+  // Shrimp
+  first:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M22 9c-6 0-12 3-12 9 0 3 2 5 5 5 6 0 9-5 9-9" fill="none" stroke="var(--coral)" stroke-width="1.4" stroke-linecap="round"/><path d="M22 9c2 0 3 1 3 3" fill="none" stroke="var(--coral)" stroke-width="1.3" stroke-linecap="round"/><path d="M10 18c-2 0-3 1-4 3M11 21c-1 1-1 2-1 4" stroke="var(--navy)" stroke-width="1.2" stroke-linecap="round"/><circle cx="21" cy="12" r="1" fill="var(--navy)"/></svg>`,
+  // Fish
+  main:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M5 15c4-5 12-5 16 0-4 5-12 5-16 0z" fill="none" stroke="var(--navy)" stroke-width="1.4"/><path d="M21 15l4-3v6z" fill="none" stroke="var(--navy)" stroke-width="1.4" stroke-linejoin="round"/><circle cx="9" cy="14" r="1" fill="var(--navy)"/><path d="M13 12c1 2 1 4 0 6" stroke="var(--coral)" stroke-width="1.2"/></svg>`,
+  // Pistachio / sweets
+  dessert:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M11 7c-3 3-3 9 1 13s10 4 13 1" fill="none" stroke="var(--olive)" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="12" cy="13" rx="3" ry="4.5" fill="var(--olive)" transform="rotate(35 12 13)"/><path d="M12 11l1 4" stroke="var(--cream)" stroke-width="1"/><ellipse cx="18" cy="18" rx="2.6" ry="4" fill="var(--coral)" transform="rotate(35 18 18)"/></svg>`,
+  // Beef / main extra
+  extra:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M8 12a7 6 0 1 1 0 7c-3 0-3-7 0-7z" fill="none" stroke="var(--navy)" stroke-width="1.4"/><circle cx="11" cy="15.5" r="2" fill="var(--coral)"/></svg>`,
+  // Wedding cake
+  cake:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M7 22v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6z" fill="none" stroke="var(--navy)" stroke-width="1.4"/><path d="M7 18h16" stroke="var(--coral)" stroke-width="1.2"/><path d="M15 8v6" stroke="var(--olive)" stroke-width="1.3" stroke-linecap="round"/><circle cx="15" cy="7" r="1.4" fill="var(--coral)"/></svg>`,
+  // Aegina lighthouse (echoes menu illustration)
+  kids:`<svg viewBox="0 0 30 30" class="sec-svg"><path d="M12 24h6l-1-12h-4z" fill="none" stroke="var(--navy)" stroke-width="1.4"/><path d="M13 16h4M12.5 20h5" stroke="var(--coral)" stroke-width="1.1"/><path d="M11 12h8" stroke="var(--navy)" stroke-width="1.4"/><rect x="13" y="7" width="4" height="5" fill="none" stroke="var(--navy)" stroke-width="1.3"/><path d="M15 7V5M15 5l4 1M15 5l-4 1" stroke="var(--olive)" stroke-width="1.1" stroke-linecap="round"/></svg>`
+};
+let LANG="en";
+
+function allergenList(keys){return keys.map(k=>A[k][LANG]).join(", ");}
+
+function render(){
+  const u=UI[LANG];
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const k=el.getAttribute("data-i");
+    if(u[k])el.textContent=u[k];
+  });
+  const m=document.getElementById("menu");
+  m.innerHTML="";
+  MENU.forEach(block=>{
+    const sec=document.createElement("section");
+    sec.className="section";
+    sec.innerHTML=`<div class="section-head"><span class="ico">${ICON[block.sec]||""}</span><h2>${u.sections[block.sec]}</h2></div>`;
+    block.dishes.forEach(d=>{
+      const traces = d.t==="rest"?traceRest(d.c):d.t;
+      const tagsHtml = d.tags.map(t=>`<span class="tag">${DT[t][LANG]}</span>`).join("");
+      const containsHtml = d.c.length
+        ? `<span class="val">${allergenList(d.c)}</span>`
+        : `<span class="val none">${u.none}</span>`;
+      const card=document.createElement("div");
+      card.className="dish";
+      card.innerHTML=`
+        <div class="dish-name">${d.name[LANG]}</div>
+        ${tagsHtml?`<div class="tags">${tagsHtml}</div>`:""}
+        <div class="row contains"><span class="lbl">${u.contains}</span>${containsHtml}</div>
+        <div class="row traces"><span class="lbl">${u.traces}</span><span class="val">${allergenList(traces)}</span></div>
+      `;
+      sec.appendChild(card);
+    });
+    m.appendChild(sec);
+  });
+}
+
+function setLang(l){
+  LANG=l;
+  document.querySelectorAll(".langbar button").forEach(b=>{
+    b.classList.toggle("active", b.getAttribute("data-lang")===l);
+  });
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+render();
+</script>
+</body>
+</html>
